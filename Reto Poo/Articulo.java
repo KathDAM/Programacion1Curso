@@ -1,14 +1,10 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-
 public class Articulo {
-    private Scanner lector = new Scanner(System.in);
+   
     private String nombre;
     private double precio;
     private double iva;
     private int cantidad;
-
-
+    public enum formaIVA{GENERAL , REDUCIDO, SUPERREDUCIDO};
 
     public Articulo(String nombre, double precio, double iva, int cantidad) {
         this.nombre = nombre;
@@ -21,10 +17,6 @@ public class Articulo {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public double getPrecio() {
@@ -47,14 +39,22 @@ public class Articulo {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
 
     // Método toString para mostrar información del artículo
-
     public String toString() {
         return "Articulo [nombre=" + nombre + ", precio=" + precio + ", iva=" + iva + ", cantidad=" + cantidad + "]";
     }
+  
 
+    // Método aumentar para mostrar información del artículo subido
+    public void aumentar (int cantidad){
+        cantidad ++;
+    }
+
+
+    // Método disminuir para mostrar información del artículo bajado
+    public void disminuir (int cantidad){
+        cantidad--;
+    }
+    
 }

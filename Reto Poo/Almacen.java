@@ -1,37 +1,13 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Almacen {
 
-    private Scanner lector = new Scanner(System.in);
-    private int max = 100;
-    private Articulo[] listaArticulos = new Articulo[max];
+    private int indice;
+    private final int maxArticulos = 100;
+    private Articulo[] listaArticulos = new Articulo[maxArticulos];
 
     public Almacen() {
-        listaArticulos = new Articulo[max];
-    }
-
-    public String PedirNombreArticulo(){ //PIDE NOMBRE DEL ARTICULO AL CLIENTE
-        lector.nextLine();
-        System.out.println();
-        System.out.print("Dime el nombre del articulo: ");
-        String valor = lector.nextLine();
-    
-        return valor;
-    }
-
-    public void agregarArticulo(Articulo articulo) {
-        listaArticulos.add(PedirNombreArticulo);
-        System.out.println("Artículo " + articulo.getNombre() + " agregado al almacen.");
-    }
-
-    public Articulo buscarArticulo(String nombre) {
-        for () {
-            if (articulo.getNombre().equalsIgnoreCase(nombre)) {
-                return articulo;
-            }
-        }
-        return null;
+        this.listaArticulos = new Articulo[maxArticulos];
     }
 
     public void mostrarArticulos() {
@@ -43,6 +19,21 @@ public class Almacen {
                 System.out.println("- " + articulo);
         }
     }
+
+    public Articulo buscarArticulo(String nombre) {
+        for () {
+            if (articulo.getNombre().equalsIgnoreCase(nombre)) {
+                return articulo;
+            }
+        }
+        return null;
+    }
+    
+    public void agregarArticulo(Articulo articulo) {
+        listaArticulos.add(TienDAM.PedirNombreArticulo());
+        System.out.println("Artículo " + articulo.getNombre() + " agregado al almacen.");
+    }
+
 
     public void recibirArticulo(String nombre, int cantidad) {
         Articulo articulo = buscarArticulo(nombre);
@@ -62,5 +53,5 @@ public class Almacen {
         
             System.out.println("Se han devuelto " + cantidad + " unidades del artículo " + nombre + ".");
         }
-    }
+    }                         
 }
