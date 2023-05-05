@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-
-/* 
 public class TienDAM {
     private static Scanner scanner = new Scanner(System.in);
     private static Almacen almacen = new Almacen(); //llama al almacen
@@ -11,9 +9,7 @@ public class TienDAM {
 
         TienDAM TiendaDAM = new TienDAM();
         TiendaDAM.iniciar();  
-
     }
- */
 
 /*  private static void mostrarMenuPrincipal() {
         System.out.println("\n=== MENÚ PRINCIPAL ===");
@@ -25,7 +21,7 @@ public class TienDAM {
 
     //INICIA TODO
     //Comienza a ejecutarse el menu principal
-/*    public void iniciar(){
+    public void iniciar(){
    
         int opcion = 0;
         
@@ -128,7 +124,8 @@ public class TienDAM {
                     System.out.print("Ingrese el nombre del artículo a buscar: ");
                     String nombre = scanner.next();
                     Articulo articulo = almacen.buscarArticulo(nombre);
-                    if (articulo == null) {
+          TienDAM TiendaDAM = new TienDAM();
+        TiendaDAM.iniciar()            if (articulo == null) {
                         System.out.println("Artículo no encontrado.");
                     } else {
                         System.out.println(articulo);
@@ -184,4 +181,3 @@ public class TienDAM {
             System.out.println("Se han recibido " + cantidad + " unidades del artículo " + articulo.getNombre() + ".");
     }
 }
-*/ 
