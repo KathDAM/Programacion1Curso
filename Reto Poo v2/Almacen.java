@@ -1,26 +1,23 @@
-import java.nio.channels.AsynchronousByteChannel;
 import java.util.ArrayList;
 
 public class Almacen {
 
     private int indice;
     private final int maxArticulos = 100;
-   // private Articulo[] listaArticulos = new Articulo[maxArticulos];
-    private ArrayList<String> listaArticulos = new ArrayList(); 
+    private Articulo[] listaArticulos = new Articulo[maxArticulos];
+
 
     public Almacen() {
-        this.listaArticulos = new ArrayList();
+        this.listaArticulos = new Articulo[maxArticulos];
     }
 
     public void mostrarArticulos() {
-        
-        if (listaArticulos.isEmpty()) {
+        if (listaArticulos.) {
             System.out.println("El almacén está vacío.");
         } else {
             System.out.println("Lista de artículos en el almacén:");
-            for (String articulo : listaArticulos) {
+            for (Articulo articulo : listaArticulos) {
                 System.out.println("- " + articulo);
-            }
         }
     }
 

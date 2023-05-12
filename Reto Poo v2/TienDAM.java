@@ -1,11 +1,8 @@
 import java.util.Scanner;
 
 public class TienDAM {
-    private static Scanner lector = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     private static Almacen almacen = new Almacen(); //llama al almacen
-    private static Articulo articulo = new Articulo();
-    
-
 
     //main
     public static void main(String[] args) {
@@ -35,8 +32,8 @@ public class TienDAM {
             System.out.println("3. Salir");
             System.out.print("Elija una opción: ");
             
-            opcion = lector.nextInt();
-            lector.nextLine();
+            opcion = scanner.nextInt();
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -72,7 +69,7 @@ public class TienDAM {
         boolean salir = false;
         while (!salir) {
             mostrarMenuPedido();
-            int opcion = lector.nextInt();
+            int opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
                     agregarArticuloPedido();
@@ -117,7 +114,7 @@ public class TienDAM {
     private static void menuAlmacen() {
         int opcion = 0;
         mostrarMenuAlmacen();
-        opcion = lector.nextInt();
+        opcion = scanner.nextInt();
         while (opcion != 6) {
             switch (opcion) {
                 case 1:
@@ -125,9 +122,10 @@ public class TienDAM {
                     break;
                 case 2:
                     System.out.print("Ingrese el nombre del artículo a buscar: ");
-                    String nombre = lector.next();
-                    Articulo articulo = almacen.buscarArticulo(nombre);         
-                    if (articulo == null) {
+                    String nombre = scanner.next();
+                    Articulo articulo = almacen.buscarArticulo(nombre);
+          TienDAM TiendaDAM = new TienDAM();
+        TiendaDAM.iniciar()            if (articulo == null) {
                         System.out.println("Artículo no encontrado.");
                     } else {
                         System.out.println(articulo);
@@ -140,19 +138,19 @@ public class TienDAM {
                     recibirArticulo();
                     break;
                 case 5:
-                    almacen.devolverArticulo();
+                    devolverArticulo();
                     break;
                 default:
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 6.");
                     break;
             }
             mostrarMenuAlmacen();
-            opcion = lector.nextInt();
+            opcion = scanner.nextInt();
         }
         System.out.println("Volviendo al menú principal.");
     }
 
-    public static String PedirNombreArticulo(){ //PIDE NOMBRE DEL ARTICULO AL CLIENTE
+    public String PedirNombreArticulo(){ //PIDE NOMBRE DEL ARTICULO AL CLIENTE
         lector.nextLine();
         System.out.println();
         System.out.print("Dime el nombre del articulo: ");
@@ -164,20 +162,20 @@ public class TienDAM {
 
     private static void agregarArticulo() {
         System.out.print("Ingrese el nombre del artículo: ");
-        String nombre = lector.next();
+        String nombre = scanner.next();
         System.out.print("Ingrese el precio del artículo: ");
-        double precio = lector.nextDouble();
+        double precio = scanner.nextDouble();
         System.out.print("Ingrese el tipo de IVA (general, reducido o exento): ");
-        double tipoIva = lector.nextDouble();
+        String tipoIva = scanner.next();
         System.out.print("Ingrese la cantidad de unidades: ");
-        int cantidad = lector.nextInt();
+        int cantidad = scanner.nextInt();
         almacen.agregarArticulo(new Articulo(nombre, precio, tipoIva, cantidad));
         System.out.println("Artículo agregado correctamente.");
     }
 
     private static void recibirArticulo() {
         System.out.print("Ingrese el nombre del artículo a recibir: ");
-        String nombre = lector.next();
+        String nombre = scanner.next();
         System.out.print("Ingrese la cantidad a recibir: ");
 
             System.out.println("Se han recibido " + cantidad + " unidades del artículo " + articulo.getNombre() + ".");

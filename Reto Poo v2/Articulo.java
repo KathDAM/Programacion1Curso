@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-
 public class Articulo {
    
     private String nombre;
     private double precio;
     private double iva;
     private int cantidad;
-    private ArrayList<String> listaArticulos = new ArrayList(); 
     public enum formaIVA{GENERAL , REDUCIDO, SUPERREDUCIDO};
 
     public Articulo(String nombre, double precio, double iva, int cantidad) {
@@ -14,9 +11,6 @@ public class Articulo {
         this.precio = precio;
         this.iva = iva;
         this.cantidad = cantidad;
-    }
-    public Articulo() {
-        this.listaArticulos = new ArrayList();
     }
 
     // GETTER Y SETTER
