@@ -2,16 +2,10 @@ import java.util.ArrayList;
 
 public class Almacen {
 
-    public int indice,cantidad;
-    private static final int maxArticulos = 100;
-    private ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>(maxArticulos);
+    private ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>();
 
     public Almacen() {
       
-    }
-
-    public Almacen(int maxArticulos) {
-        this.listaArticulos = new ArrayList<Articulo>(maxArticulos);
     }
 
     public void mostrarArticulos() {
@@ -21,14 +15,14 @@ public class Almacen {
         } else {
             System.out.println("Lista de artículos en el almacén:");
             for (Articulo articulo : listaArticulos) {
-                System.out.println("- " + articulo.getNombre());
+                System.out.println(articulo.toString());   
             }
         }
     }
 
     public void buscarArticulo(String nombre){
         for (Articulo articulo : listaArticulos) {
-            if (articulo.getNombre().equalsIgnoreCase(nombre)) {
+            if (articulo.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
                 System.out.println("El artículo " + nombre + " se encuentra en el almacen.");
                 return;
             }
@@ -37,44 +31,28 @@ public class Almacen {
     }
     
     public boolean agregarArticulo(Articulo articulo) {
-        if (listaArticulos.size() < maxArticulos) {
-            listaArticulos.add(articulo);
-            System.out.println("Artículo " + articulo.getNombre() + " agregado al almacén.");
-            return true;
-        } else {
-            System.out.println("El almacén está lleno, no se pueden agregar más artículo.");
-            return false;
-        }
+        listaArticulos.add(articulo);
+        System.out.println("Artículo " + articulo.getNombre() + " agregado al almacén.");
+        return true;
     }
 
+    public boolean retirarArticulo(int indice){
+        listaArticulos.remove(indice);
+        System.out.println("Articulo" + indice + "eliminado.");
+        return true;
+    }
 
     public boolean recibirArticulo(int indice, int cantidad) {
-        Articulo articulo = listaArticulos.get(indice);
-        if (articulo == null) {
-            System.out.println("El artículo " + indice + " no existe en el almacen.");
-        } else {
-            articulo.aumentar(cantidad);
-            System.out.println("Se han recibido " + cantidad + " unidades del artículo " + articulo.getNombre() + ".");
-        }
-        return false;
+        listaArticulos.get(indice).aumentar(cantidad);
+        System.out.println("Se han recibido " + cantidad + " unidades del artículo " + listaArticulos.get(indice).getNombre() + ".");
+        return true;
        
     }
 
-
     public boolean devolverArticulo(int indice, int cantidad) {
-        Articulo articulo = listaArticulos.get(indice);
-        if (articulo == null) {
-            System.out.println("El artículo " + indice + " no existe en el almacén.");
-            return false;
-        } else {
-            if (articulo.getCantidad() >= cantidad) {
-                articulo.disminuir(cantidad);
-                System.out.println("Se han devuelto " + cantidad + " unidades del artículo " + articulo.getNombre() + ".");
-                return true;
-            } else {
-                System.out.println("No hay suficientes unidades del artículo " + articulo.getNombre() + " para devolver.");
-                return false;
-            }
-        }                  
+        listaArticulos.get(indice).disminuir(cantidad);
+        System.out.println("Se han devuelto " + cantidad + " unidades del artículo " + listaArticulos.get(indice).getNombre() + ".");
+        return true;
+              
     }
 }

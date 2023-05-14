@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class TienDAM {
     private static Scanner lector = new Scanner(System.in);
-    private static final int maxArticulos = 100;
-    private static ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>(maxArticulos);
     private static Almacen almacen = new Almacen(); //llama al almacen
    
     //MAIN
@@ -44,7 +42,7 @@ public class TienDAM {
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 3.");
                     break;
             }
-        } while (opcion != 3);
+        } 
     }
 
     //MUESTRA EL SUBMENU DE PEDIDOS
@@ -63,6 +61,7 @@ public class TienDAM {
     private static void menuPedido() {
        
         int opcion = 0;
+        boolean salir = false;
 
         do {
             mostrarMenuPedido();
@@ -93,7 +92,8 @@ public class TienDAM {
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 6.");
                     break;
             }
-        }while (opcion != 6); 
+        }while (!salir); 
+
         System.out.println("Volviendo al menú principal.");
     }
     
@@ -130,12 +130,22 @@ public class TienDAM {
                     agregarArticulo();
                     break;
                 case 4:
-                    recibirArticulo();
+                    almacen.mostrarArticulos();
+                    System.out.println("Articulo que quieres recibir");
+                    int indice = lector.nextInt();
+                    System.out.println("Dime la cantidad");
+                    int cantidad = lector.nextInt();
+                    almacen.recibirArticulo(indice, cantidad);
                     break;
                 case 5:
-                int indice=0, cantidad=0;
-                   almacen.devolverArticulo(indice, cantidad);
+                    almacen.mostrarArticulos();
+                    System.out.println("Articulo que quieres devolver");
+                    int indice2 = lector.nextInt();
+                    System.out.println("Dime la cantidad");
+                    int cantidad2 = lector.nextInt();
+                    almacen.devolverArticulo(indice2, cantidad2);
                     break;
+                    
                 default:
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 6.");
                     break;
@@ -159,8 +169,24 @@ public class TienDAM {
         String nombre = lector.next();
         System.out.print("Ingrese el precio del artículo: ");
         double precio = lector.nextDouble();
-        System.out.print("Ingrese el tipo de IVA (general, reducido o exento): ");
-        double tipoIva = lector.nextDouble();
+        System.out.print("Ingrese el tipo de IVA en porcentaje: ");
+        int tipoIva = lector.nextInt();
+        double iva = 0;
+        switch (tipoIva) {
+            case 1:
+                iva = 0.21;
+                break;
+            case 2:
+                iva = 0.10;
+                break;
+            case 3:
+                iva = 0.04;
+                break;
+            default:
+            System.out.println("No es una opcion valida");
+                break;
+        }
+
         System.out.print("Ingrese la cantidad de unidades: ");
         int cantidad = lector.nextInt();
         almacen.agregarArticulo(new Articulo(nombre, precio, tipoIva, cantidad));
