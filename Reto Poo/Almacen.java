@@ -42,6 +42,14 @@ public class Almacen {
         return true;
     }
 
+    public void modificarPrecioArticulo(String nombre, double nuevoPrecio) {
+                listaArticulos.
+                System.out.println("El precio del artículo '" + articulo.getNombre() + "' ha sido modificado. Nuevo precio: " + nuevoPrecio);
+                return;
+            }
+        }
+ 
+
     public boolean recibirArticulo(int indice, int cantidad) {
         listaArticulos.get(indice).aumentar(cantidad);
         System.out.println("Se han recibido " + cantidad + " unidades del artículo " + listaArticulos.get(indice).getNombre() + ".");
