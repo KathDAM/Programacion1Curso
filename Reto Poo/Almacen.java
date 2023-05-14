@@ -1,15 +1,17 @@
-import java.nio.channels.AsynchronousByteChannel;
 import java.util.ArrayList;
 
 public class Almacen {
 
-    private int indice;
-    private final int maxArticulos = 100;
-   // private Articulo[] listaArticulos = new Articulo[maxArticulos];
-    private ArrayList<String> listaArticulos = new ArrayList(); 
+    public int indice,cantidad;
+    private static final int maxArticulos = 100;
+    private ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>(maxArticulos);
 
     public Almacen() {
-        this.listaArticulos = new ArrayList();
+      
+    }
+
+    public Almacen(int maxArticulos) {
+        this.listaArticulos = new ArrayList<Articulo>(maxArticulos);
     }
 
     public void mostrarArticulos() {
@@ -18,44 +20,61 @@ public class Almacen {
             System.out.println("El almacén está vacío.");
         } else {
             System.out.println("Lista de artículos en el almacén:");
-            for (String articulo : listaArticulos) {
-                System.out.println("- " + articulo);
+            for (Articulo articulo : listaArticulos) {
+                System.out.println("- " + articulo.getNombre());
             }
         }
     }
 
-    public Articulo buscarArticulo(String nombre) {
-        for () {
+    public void buscarArticulo(String nombre){
+        for (Articulo articulo : listaArticulos) {
             if (articulo.getNombre().equalsIgnoreCase(nombre)) {
-                return articulo;
+                System.out.println("El artículo " + nombre + " se encuentra en el almacen.");
+                return;
             }
         }
-        return null;
+        System.out.println("El artículo " + nombre + " no se encuentra en el almacen.");
     }
     
-    public void agregarArticulo(Articulo articulo) {
-        listaArticulos.add(TienDAM.PedirNombreArticulo());
-        System.out.println("Artículo " + articulo.getNombre() + " agregado al almacen.");
-    }
-
-
-    public void recibirArticulo(String nombre, int cantidad) {
-        Articulo articulo = buscarArticulo(nombre);
-        if (articulo == null) {
-            System.out.println("El artículo " + nombre + " no existe en el almacen.");
+    public boolean agregarArticulo(Articulo articulo) {
+        if (listaArticulos.size() < maxArticulos) {
+            listaArticulos.add(articulo);
+            System.out.println("Artículo " + articulo.getNombre() + " agregado al almacén.");
+            return true;
         } else {
-         
-            System.out.println("Se han recibido " + cantidad + " unidades del artículo " + nombre + ".");
+            System.out.println("El almacén está lleno, no se pueden agregar más artículo.");
+            return false;
         }
     }
 
-    public void devolverArticulo(String nombre, int cantidad) {
-        Articulo articulo = buscarArticulo(nombre);
+
+    public boolean recibirArticulo(int indice, int cantidad) {
+        Articulo articulo = listaArticulos.get(indice);
         if (articulo == null) {
-            System.out.println("El artículo " + nombre + " no existe en el almacen.");
+            System.out.println("El artículo " + indice + " no existe en el almacen.");
         } else {
-        
-            System.out.println("Se han devuelto " + cantidad + " unidades del artículo " + nombre + ".");
+            articulo.aumentar(cantidad);
+            System.out.println("Se han recibido " + cantidad + " unidades del artículo " + articulo.getNombre() + ".");
         }
-    }                         
+        return false;
+       
+    }
+
+
+    public boolean devolverArticulo(int indice, int cantidad) {
+        Articulo articulo = listaArticulos.get(indice);
+        if (articulo == null) {
+            System.out.println("El artículo " + indice + " no existe en el almacén.");
+            return false;
+        } else {
+            if (articulo.getCantidad() >= cantidad) {
+                articulo.disminuir(cantidad);
+                System.out.println("Se han devuelto " + cantidad + " unidades del artículo " + articulo.getNombre() + ".");
+                return true;
+            } else {
+                System.out.println("No hay suficientes unidades del artículo " + articulo.getNombre() + " para devolver.");
+                return false;
+            }
+        }                  
+    }
 }

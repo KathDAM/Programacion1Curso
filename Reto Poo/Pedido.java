@@ -4,7 +4,7 @@ public class Pedido {
     private double descuento;
     private double subtotal;
 
-public void agregarArticulo(Articulo articulo, int cantidad) {
+public void agregarArticuloPedido(Articulo articulo, int cantidad) {
     if (articulo != null && cantidad > 0) {
         for (int i = 0; i < articulos.size(); i++) {
             Articulo a = articulos.get(i);

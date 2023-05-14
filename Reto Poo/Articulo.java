@@ -2,11 +2,12 @@ import java.util.ArrayList;
 
 public class Articulo {
    
-    private String nombre;
+    private final String nombre;
     private double precio;
-    private double iva;
+    private final double iva;
     private int cantidad;
-    private ArrayList<String> listaArticulos = new ArrayList(); 
+    private final int maxArticulos = 100;
+    private ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>(maxArticulos); 
     public enum formaIVA{GENERAL , REDUCIDO, SUPERREDUCIDO};
 
     public Articulo(String nombre, double precio, double iva, int cantidad) {
@@ -14,9 +15,6 @@ public class Articulo {
         this.precio = precio;
         this.iva = iva;
         this.cantidad = cantidad;
-    }
-    public Articulo() {
-        this.listaArticulos = new ArrayList();
     }
 
     // GETTER Y SETTER
@@ -37,26 +35,24 @@ public class Articulo {
         return iva;
     }
 
-    public void setIva(double iva) {
-        this.iva = iva;
-    }
-
     public int getCantidad() {
         return cantidad;
     }
-
 
     // Método toString para mostrar información del artículo
     public String toString() {
         return "Articulo [nombre=" + nombre + ", precio=" + precio + ", iva=" + iva + ", cantidad=" + cantidad + "]";
     }
-  
+
+    // Método para mostrar información del precio del artículo 
+    public void getprecio (double precio){
+   
+    }
 
     // Método aumentar para mostrar información del artículo subido
     public void aumentar (int cantidad){
         cantidad ++;
     }
-
 
     // Método disminuir para mostrar información del artículo bajado
     public void disminuir (int cantidad){

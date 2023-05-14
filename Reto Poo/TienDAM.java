@@ -1,31 +1,23 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TienDAM {
     private static Scanner lector = new Scanner(System.in);
+    private static final int maxArticulos = 100;
+    private static ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>(maxArticulos);
     private static Almacen almacen = new Almacen(); //llama al almacen
-    private static Articulo articulo = new Articulo();
-    
-
-
-    //main
+   
+    //MAIN
     public static void main(String[] args) {
 
         TienDAM TiendaDAM = new TienDAM();
         TiendaDAM.iniciar();  
     }
 
-/*  private static void mostrarMenuPrincipal() {
-        System.out.println("\n=== MENÚ PRINCIPAL ===");
-        System.out.println("1. Almacen");
-        System.out.println("2. Pedido");
-        System.out.println("3. Salir");
-        System.out.print("Ingrese una opción: ");
-    }*/
-
-    //INICIA TODO
+    //INICIA EL PROGRAMA
     //Comienza a ejecutarse el menu principal
     public void iniciar(){
-   
+
         int opcion = 0;
         
         while (opcion != 3) {
@@ -46,7 +38,7 @@ public class TienDAM {
                     menuPedido();
                     break;
                 case 3:
-                    System.out.println("Gracias por utilizar nuestro sistema.");
+                    System.out.println("Gracias por la visita, vuelva pronto.");
                     break;
                 default:
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 3.");
@@ -69,10 +61,13 @@ public class TienDAM {
 
     //ENTRA AL SUBMENU DE PEDIDOS
     private static void menuPedido() {
-        boolean salir = false;
-        while (!salir) {
+       
+        int opcion = 0;
+
+        do {
             mostrarMenuPedido();
-            int opcion = lector.nextInt();
+            opcion = lector.nextInt();
+
             switch (opcion) {
                 case 1:
                     agregarArticuloPedido();
@@ -98,7 +93,8 @@ public class TienDAM {
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 6.");
                     break;
             }
-        }
+        }while (opcion != 6); 
+        System.out.println("Volviendo al menú principal.");
     }
     
     //MUESTRA EL SUBMENU DE ALMACEN
@@ -113,12 +109,14 @@ public class TienDAM {
         System.out.print("Ingrese una opción: ");
     }
 
-    //ENTRA AL SUBMENU DE PEDIDOS
+    //ENTRA AL SUBMENU DE ALMACEN
     private static void menuAlmacen() {
         int opcion = 0;
-        mostrarMenuAlmacen();
-        opcion = lector.nextInt();
-        while (opcion != 6) {
+        
+        do {
+            mostrarMenuAlmacen();
+            opcion = lector.nextInt();
+
             switch (opcion) {
                 case 1:
                     almacen.mostrarArticulos();
@@ -126,12 +124,7 @@ public class TienDAM {
                 case 2:
                     System.out.print("Ingrese el nombre del artículo a buscar: ");
                     String nombre = lector.next();
-                    Articulo articulo = almacen.buscarArticulo(nombre);         
-                    if (articulo == null) {
-                        System.out.println("Artículo no encontrado.");
-                    } else {
-                        System.out.println(articulo);
-                    }
+                    almacen.buscarArticulo(nombre);         
                     break;
                 case 3:
                     agregarArticulo();
@@ -140,16 +133,15 @@ public class TienDAM {
                     recibirArticulo();
                     break;
                 case 5:
-                    almacen.devolverArticulo();
+                int indice=0, cantidad=0;
+                   almacen.devolverArticulo(indice, cantidad);
                     break;
                 default:
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 6.");
                     break;
             }
-            mostrarMenuAlmacen();
-            opcion = lector.nextInt();
-        }
-        System.out.println("Volviendo al menú principal.");
+        }while (opcion != 6); 
+         System.out.println("Volviendo al menú principal.");
     }
 
     public static String PedirNombreArticulo(){ //PIDE NOMBRE DEL ARTICULO AL CLIENTE
