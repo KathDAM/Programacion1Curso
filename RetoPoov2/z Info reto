@@ -1,0 +1,53 @@
+Reto de POO: TienDAM
+DESCRIPCIÓN
+En TienDAM venden artículos de todo tipo y todos los días entra mucha gente a
+comprar. Los clientes pueden ver y tocar los artículos, pero para comprarlos tienen que
+ir a alguna de las ‘cajas’ donde hay un dependiente y hacerle el pedido.
+
+OBJETIVO
+Desarrollar mediante Programación Orientada a Objetos (POO) el software de la
+caja registradora que utiliza el dependiente de la tienda para gestionar los artículos del
+almacen y hacer los pedidos de los clientes.
+
+
+
+
+1º DAM - Programación Reto de POO: TienDAM
+INTERFAZ
+El usuario (dependiente) interactuará con la aplicación mediante un menú de texto
+que le permita elegir entre distintas opciones numeradas.
+• El menú principal mostrará estas opciones:
+1 Almacen
+2 Pedido
+3 Salir
+• La opción 1 Almacen entrará a un submenú con opciones para gestionar el almacen
+de la tienda (ver, buscar y añadir nuevos artículos del almacen, así como recibir o
+devolver artículos).
+• La opción 2 Pedido permitirá gestionar un nuevo pedido de un cliente, es decir, crear
+una lista de artículos a comprar (de los existentes en almacen) pudiendo añadir, quitar
+y modificar la lista y cantidades (como un “carrito” de la compra), aplicar descuentos y
+hacer la venta (se muestra el ticket por pantalla con la lista de artículos, subtotal, iva y
+total a pagar). Téngase en cuenta que los pedidos se hacen en base a los artículos
+que hay en almacén, y tras una venta debe actualizarse la información del almacen.
+• La opción 3 Salir finaliza el programa.
+
+CLASES A IMPLEMENTAR
+• Articulo: Representa un artículo o producto de la tienda. Contiene la información
+relativa a su nombre, precio, tipo de iva y cantidad.
+• Almacen: Representa el almacén de la tienda. Contiene varios artículos (array o
+ArrayList) y varios métodos para gestionarla.
+• Pedido: Representa un pedido. De forma similar a una carrito de la compra,
+almacena una lista de artículos del almacen y las cantidades a comprar. Deberá tener
+los métodos necesarios para gestionar el carrito y hacer la venta.
+• TienDAM: Clase principal del programa con método ‘main’, encargada de los menús,
+submenús y toda la interacción con el usuario por teclado/ratón.
+Ten en cuenta que las clases Articulo, Almacen y Pedido solo deben encargarse
+de almacenar la información y la lógica de negocio (qué se puede hacer con la
+información). La clase TienDAM será la encargada de toda la interacción con el usuario
+(entrada por teclado y salida por pantalla), incluido el menú principal y los submenús. 
+
+Este diseño es similar al patrón de diseño Modelo-Vista-Controlador (MVC) pero
+algo simplificado:
+MODELO => Articulo, Almacen y Pedido
+VISTA Y CONTROLADOR => TienDAM
+Haz el diseño/diagrama de clases y luego impleméntalo.

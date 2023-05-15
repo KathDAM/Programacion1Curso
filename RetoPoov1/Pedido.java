@@ -1,3 +1,5 @@
+package RetoPoov1;
+
 public class Pedido {
     private int max = 100;
     private Articulo[] listaArticulos = new Articulo[max];
