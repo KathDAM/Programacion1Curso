@@ -1,6 +1,5 @@
 package RetoPoov1;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TienDAM {
@@ -48,7 +47,7 @@ public class TienDAM {
     }
 
     //MUESTRA EL SUBMENU DE PEDIDOS
-    private static void mostrarMenuPedido() {
+ /*  private static void mostrarMenuPedido() {
         System.out.println("----- MENÚ PEDIDO -----");
         System.out.println("1. Agregar artículo");
         System.out.println("2. Modificar artículo");
@@ -58,7 +57,7 @@ public class TienDAM {
         System.out.println("6. Volver al menú principal");
         System.out.print("Ingrese una opción: ");
     }
-/* 
+ 
     //ENTRA AL SUBMENU DE PEDIDOS
     private static void menuPedido() {
        
@@ -172,33 +171,33 @@ public class TienDAM {
 
 
     private static void agregarArticulo() {
-        System.out.print("Ingrese el nombre del artículo: ");
-        String nombre = lector.next();
-        System.out.print("Ingrese el precio del artículo: ");
-        double precio = lector.nextDouble();
-        System.out.print("Ingrese el tipo de IVA en porcentaje: ");
-        int tipoIva = lector.nextInt();
-        double iva = 0;
-        switch (tipoIva) {
-            case 1:
-                iva = 0.21;
-                break;
-            case 2:
-                iva = 0.10;
-                break;
-            case 3:
-                iva = 0.04;
-                break;
-            default:
-            System.out.println("No es una opcion valida");
-                break;
-        }
-
-        System.out.print("Ingrese la cantidad de unidades: ");
-        int cantidad = lector.nextInt();
-        almacen.agregarArticulo(new Articulo(nombre, precio, tipoIva, cantidad));
-        System.out.println("Artículo agregado correctamente.");
+    System.out.print("Ingrese el nombre del artículo: ");
+    String nombre = lector.next();
+    System.out.print("Ingrese el precio del artículo: ");
+    double precio = lector.nextDouble();
+    System.out.print("Seleccione el tipo de IVA (1. general, 2. reducido o 3. exento): ");
+    int tipoIva = lector.nextInt();
+    double iva = 0;
+    switch (tipoIva) {
+        case 1:
+            iva = 0.21; // general
+            break;
+        case 2:
+            iva = 0.10; // reducido
+            break;
+        case 3:
+            iva = 0.04; // exento
+            break;
+        default:
+            System.out.println("No es una opción válida");
+            return; // Salir del método si el tipo de IVA no es válido
     }
+    System.out.print("Ingrese la cantidad de unidades: ");
+    int cantidad = lector.nextInt();
+    almacen.agregarArticulo(new Articulo(nombre, precio, iva, cantidad));
+    System.out.println("Artículo agregado correctamente.");
+}
+
 /*
     private static void recibirArticulo() {
         System.out.print("Ingrese el nombre del artículo a recibir: ");

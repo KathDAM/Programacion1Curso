@@ -9,7 +9,7 @@ public class Almacen {
     public Almacen() {
       
     }
-
+    // MUESTRA LOS ARTÍCULOS EN EL ALMACÉN
     public void mostrarArticulos() {
         
         if (listaArticulos.isEmpty()) {
@@ -22,18 +22,16 @@ public class Almacen {
         }
     }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // DEVUELVE LA CANTIDAD DE ARTÍCULOS EN EL ALMACÉN
     public int cuantosArticulos(){
         return listaArticulos.size();
-         /*if (listaArticulos.contains(listaArticulos)) {
-            mostrarArticulos();
-            return true;
-         } else {
-            System.out.println("No hay articulos, porfavor añada articulos al almacen");
-            
-         }
-        return false;*/
     }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // BUSCA UN ARTÍCULO POR NOMBRE
     public void buscarArticulo(String nombre){
         for (Articulo articulo : listaArticulos) {
             if (articulo.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
@@ -43,27 +41,50 @@ public class Almacen {
         }
         System.out.println("El artículo " + nombre + " no se encuentra en el almacen.");
     }
-    
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // AGREGA UN ARTÍCULO AL ALMACÉN
     public boolean agregarArticulo(Articulo articulo) {
         listaArticulos.add(articulo);
         System.out.println("Artículo " + articulo.getNombre() + " agregado al almacén.");
         return true;
     }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // RETIRA UN ARTÍCULO DEL ALMACÉN 
     public boolean retirarArticulo(int indice){
         listaArticulos.remove(indice);
         System.out.println("Articulo" + indice + "eliminado.");
         return true;
     }
 
-   /* public void modificarPrecioArticulo(String nombre, double nuevoPrecio) {
-                listaArticulos.
-                System.out.println("El precio del artículo '" + articulo.getNombre() + "' ha sido modificado. Nuevo precio: " + nuevoPrecio);
-                return;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // MODIFICA EL PRECIO DE UN ARTÍCULO 
+    public void modificarPrecio(String nombre, double nuevoPrecio) {
+        boolean encontrar = false;
+    
+        for (Articulo articulo : listaArticulos) {
+            if(articulo.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                articulo.setPrecio(nuevoPrecio);
+                encontrar = true;
+                break;
             }
         }
-  */
+    
+        if (encontrar) {
+            System.out.println("Precio del artículo '" + nombre + "' modificado correctamente.");
+            System.out.println("Precio actual: " + nuevoPrecio);
+        } else {
+            System.out.println("No se encontró el artículo '" + nombre + "'.");
+        }
+    }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // RECIBE UNA CANTIDAD DE UNIDADES DE UN ARTÍCULO
     public boolean recibirArticulo(int indice, int cantidad) {
         listaArticulos.get(indice).aumentar(cantidad);
         System.out.println("Se han recibido " + cantidad + " unidades del artículo " + listaArticulos.get(indice).getNombre() + ".");
@@ -71,6 +92,9 @@ public class Almacen {
        
     }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // DEVUELVE UNA CANTIDAD DE UNIDADES A DEVOLVER
     public boolean devolverArticulo(int indice, int cantidad) {
         listaArticulos.get(indice).disminuir(cantidad);
         System.out.println("Se han devuelto " + cantidad + " unidades del artículo " + listaArticulos.get(indice).getNombre() + ".");
@@ -78,3 +102,15 @@ public class Almacen {
               
     }
 }
+
+    /*// METODO PARA PEDIDO
+    public void devolverArticulo(Articulo articulo) {
+    }
+    // DEVUELVE EL STOCK ACTUAL DEL ALMACEN
+    public boolean verificarStock(String nombre, int cantidad) {
+        for (Articulo articulo : listaArticulos) {
+            devolverArticulo(articulo);
+        }
+        return false;*
+    }
+} */
