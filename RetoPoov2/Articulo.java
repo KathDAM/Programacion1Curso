@@ -7,15 +7,14 @@ public class Articulo {
     private final double iva;
     private int cantidad;
 
-    public Articulo(String nombre, double precio, double iva, int cantidad) throws Exception {
-        if (cantidad < 0) {
-            throw new Exception("La cantidad no puede ser negativa");
-        }
+    public Articulo(String nombre, double precio, double iva, int cantidad) {
         this.nombre = nombre;
         this.precio = precio;
         this.iva = iva;
         this.cantidad = cantidad;
     }
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // GETTER Y SETTER
 
@@ -27,7 +26,10 @@ public class Articulo {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(double precio) throws IllegalArgumentException {
+        if (precio < 0) {
+            throw new IllegalArgumentException("El precio no puede ser negativo.");
+        }
         this.precio = precio;
     }
 
@@ -35,7 +37,10 @@ public class Articulo {
         return iva;
     }
 
-    public static int setCantidad(int cantidad) {
+    public static int setCantidad(int cantidad) throws IllegalArgumentException {
+        if (cantidad < 0) {
+            throw new IllegalArgumentException("La cantidad no puede ser negativa.");
+        }
         return cantidad;
     }
 
@@ -43,12 +48,17 @@ public class Articulo {
         return cantidad;
     }
 
-    // Método toString para mostrar información del artículo
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    
+    // MÉTODO TOSTRING PARA MOSTRAR INFORMACIÓN DEL ARTÍCULO
     public String toString() {
         return "Articulo [nombre=" + nombre + ", precio=" + precio + ", iva=" + iva + ", cantidad=" + cantidad + "]";
     }
 
-    // Método aumentar para mostrar información del artículo subido
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    // MÉTODO AUMENTAR PARA MOSTRAR INFORMACIÓN DEL ARTÍCULO SUBIDO
     public void aumentar (int cantidad) throws  IllegalArgumentException{
         if (cantidad < 0) {
             throw new IllegalArgumentException("La cantidad no puede ser negativa");
@@ -56,7 +66,9 @@ public class Articulo {
         this.cantidad += cantidad;
     }
 
-    // Método disminuir para mostrar información del artículo bajado
+//-----------------------------------------------------------------------------------------------------------
+
+    // MÉTODO DISMINUIR PARA MOSTRAR INFORMACIÓN DEL ARTÍCULO BAJADO
     public void disminuir (int cantidad) throws IllegalArgumentException{
         if (cantidad < 0 || cantidad > this.cantidad) {
             throw new IllegalArgumentException("La cantidad es inválida");

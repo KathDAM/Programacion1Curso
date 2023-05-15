@@ -64,6 +64,9 @@ public class TienDAM {
             }
         } 
     }
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 /* 
     //MUESTRA EL SUBMENU DE PEDIDOS
     private static void mostrarMenuPedido() {
@@ -76,6 +79,8 @@ public class TienDAM {
         System.out.println("6. Volver al menú principal");
         System.out.print("Ingrese una opción: ");
     }
+
+//----------------------------------------------------------------------------------------------------------- 
  
     //ENTRA AL SUBMENU DE PEDIDOS
     private static void menuPedido() {
@@ -130,6 +135,7 @@ public class TienDAM {
         System.out.println("7. Volver al menú principal");
         System.out.print("Ingrese una opción: ");
     }
+//----------------------------------------------------------------------------------------------------------
 
     //ENTRA AL SUBMENU DE ALMACEN
     private static void menuAlmacen() {
@@ -154,6 +160,8 @@ public class TienDAM {
                         agregarArticulo();
                     } catch (Exception agreg){
                         System.out.println("Error al agregar el artículo: " + agreg.getMessage());
+                        // VACIAR EL BUFFER
+                        lector.nextLine();
                     }
                     break;
                 case 4:
@@ -171,6 +179,8 @@ public class TienDAM {
                             System.out.println("Valor inválido, por favor ingrese un número entero.");
                         } catch (IndexOutOfBoundsException e) {
                             System.out.println("Índice inválido, por favor ingrese un valor dentro del rango.");
+                            // VACIAR EL BUFFER
+                            lector.nextLine();
                         }
                     }
                     break;
@@ -186,6 +196,8 @@ public class TienDAM {
                         System.out.println("Valor inválido, por favor ingrese un número entero.");
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("Índice inválido, por favor ingrese un valor dentro del rango.");
+                        // VACIAR EL BUFFER
+                        lector.nextLine();
                     }
                     break;
                 case 6:
@@ -198,6 +210,8 @@ public class TienDAM {
                         almacen.modificarPrecio(nombre2, nuevoPrecio);
                     } catch (InputMismatchException e) {
                         System.out.println("Valor inválido, por favor ingrese un número.");
+                        // VACIAR EL BUFFER
+                        lector.nextLine();
                     }
                     break;
                 case 7:
@@ -219,7 +233,8 @@ public class TienDAM {
             System.out.println();
             System.out.print("Dime el nombre del articulo: ");
             String valor = lector.nextLine();
-
+            // VACIAR EL BUFFER
+            lector.nextLine();
             return valor;
         } catch (Exception e) {
             System.out.println("No es correcto, dime un nombre válido");
@@ -227,6 +242,7 @@ public class TienDAM {
         }
     }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     private static void agregarArticulo() throws Exception {
         try {
@@ -256,6 +272,10 @@ public class TienDAM {
             almacen.agregarArticulo(articulo);
         } catch (Exception e) {
             System.out.println("El nombre no es valido, vuelve a intentarlo ");
+            // VACIAR EL BUFFER
+            lector.nextLine();
         }
+
+
     }
 }

@@ -15,7 +15,7 @@ public class Almacen {
         if (listaArticulos.isEmpty()) {
             System.out.println("El almacén está vacío.");
         } else {
-            System.out.println("Lista de artículos en el almacén:");
+            System.out.println("Stock en el almacén:");
             for (Articulo articulo : listaArticulos) {
                 System.out.println(articulo.toString());   
             }
@@ -103,6 +103,8 @@ public class Almacen {
     }
 }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     /*// METODO PARA PEDIDO
     public void devolverArticulo(Articulo articulo) {
     }
@@ -113,4 +115,24 @@ public class Almacen {
         }
         return false;*
     }
-} */
+} 
+
+//-----------------------------------------------------------------------------------------------------------
+
+    // DEVUELVE EL STOCK ACTUAL DEL ALMACEN
+    public void verificarStock(String nombre, int cantidad) throws Exception {
+     // PRODUCTOS EN ALMACEN PARA PRUEBA
+     Articulo articulo1 = new Articulo("Camiseta", 15.99, 0.21, 50);
+     Articulo articulo2 = new Articulo("Pantalón", 29.99, 0.21, 40);
+     Articulo articulo3 = new Articulo("Zapatos", 59.99, 0.21, 20);
+
+    // AGREGAR LOS PRODUCTOS A LA LISTA DE ARTÍCULOS
+    listaArticulos.add(articulo1);
+    listaArticulos.add(articulo2);
+    listaArticulos.add(articulo3);
+    // MOSTRAR LA LISTA DE ARTÍCULOS
+    for (Articulo articulo : listaArticulos) {
+        System.out.println(articulo);
+    }
+    }
+*/
