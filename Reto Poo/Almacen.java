@@ -20,6 +20,18 @@ public class Almacen {
         }
     }
 
+    public int cuantosArticulos(){
+        return listaArticulos.size();
+         /*if (listaArticulos.contains(listaArticulos)) {
+            mostrarArticulos();
+            return true;
+         } else {
+            System.out.println("No hay articulos, porfavor añada articulos al almacen");
+            
+         }
+        return false;*/
+    }
+
     public void buscarArticulo(String nombre){
         for (Articulo articulo : listaArticulos) {
             if (articulo.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
@@ -42,13 +54,13 @@ public class Almacen {
         return true;
     }
 
-    public void modificarPrecioArticulo(String nombre, double nuevoPrecio) {
+   /* public void modificarPrecioArticulo(String nombre, double nuevoPrecio) {
                 listaArticulos.
                 System.out.println("El precio del artículo '" + articulo.getNombre() + "' ha sido modificado. Nuevo precio: " + nuevoPrecio);
                 return;
             }
         }
- 
+  */
 
     public boolean recibirArticulo(int indice, int cantidad) {
         listaArticulos.get(indice).aumentar(cantidad);

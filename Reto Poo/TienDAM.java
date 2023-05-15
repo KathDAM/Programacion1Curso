@@ -33,7 +33,7 @@ public class TienDAM {
                     menuAlmacen();
                     break;
                 case 2:
-                    menuPedido();
+                   // menuPedido();
                     break;
                 case 3:
                     System.out.println("Gracias por la visita, vuelva pronto.");
@@ -56,7 +56,7 @@ public class TienDAM {
         System.out.println("6. Volver al menú principal");
         System.out.print("Ingrese una opción: ");
     }
-
+/* 
     //ENTRA AL SUBMENU DE PEDIDOS
     private static void menuPedido() {
        
@@ -96,7 +96,7 @@ public class TienDAM {
 
         System.out.println("Volviendo al menú principal.");
     }
-    
+    */
     //MUESTRA EL SUBMENU DE ALMACEN
     private static void mostrarMenuAlmacen() {
         System.out.println("----- MENÚ ALMACEN -----");
@@ -130,12 +130,17 @@ public class TienDAM {
                     agregarArticulo();
                     break;
                 case 4:
-                    almacen.mostrarArticulos();
-                    System.out.println("Articulo que quieres recibir");
-                    int indice = lector.nextInt();
-                    System.out.println("Dime la cantidad");
-                    int cantidad = lector.nextInt();
-                    almacen.recibirArticulo(indice, cantidad);
+                    if(almacen.cuantosArticulos() == 0){
+                        System.out.println("No es posible realizar la operacion, almacen vacio");
+                    }
+                    else {
+                        almacen.mostrarArticulos();
+                        System.out.println("Articulo que quieres recibir");
+                        int indice = lector.nextInt();
+                        System.out.println("Dime la cantidad");
+                        int cantidad = lector.nextInt();
+                        almacen.recibirArticulo(indice, cantidad);
+                    }
                     break;
                 case 5:
                     almacen.mostrarArticulos();
@@ -192,12 +197,12 @@ public class TienDAM {
         almacen.agregarArticulo(new Articulo(nombre, precio, tipoIva, cantidad));
         System.out.println("Artículo agregado correctamente.");
     }
-
+/*
     private static void recibirArticulo() {
         System.out.print("Ingrese el nombre del artículo a recibir: ");
         String nombre = lector.next();
         System.out.print("Ingrese la cantidad a recibir: ");
 
             System.out.println("Se han recibido " + cantidad + " unidades del artículo " + articulo.getNombre() + ".");
-    }
+    } */
 }
