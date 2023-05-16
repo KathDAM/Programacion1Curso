@@ -1,28 +1,28 @@
+//Catherine AM
 package RetoPoov2;
 
 import java.util.ArrayList;
 
 public class Almacen {
 
-    private ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>();
+    public ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>();
 
     public Almacen() {
       
     }
     // MUESTRA LOS ARTÍCULOS EN EL ALMACÉN
     public void mostrarArticulos() {
-        
         if (listaArticulos.isEmpty()) {
             System.out.println("El almacén está vacío.");
         } else {
             System.out.println("Stock en el almacén:");
-            for (Articulo articulo : listaArticulos) {
-                for (int i = 0; i < listaArticulos.size(); i++) {
-                    System.out.println("Indice "+ i + ": " + articulo.toString());
-                } 
+            for (int i = 0; i < listaArticulos.size(); i++) {
+                Articulo articulo = listaArticulos.get(i);
+                System.out.println("Índice " + i + ": " + articulo.toString());
             }
         }
     }
+    
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -48,8 +48,12 @@ public class Almacen {
 
     // AGREGA UN ARTÍCULO AL ALMACÉN
     public boolean agregarArticulo(Articulo articulo) {
-        listaArticulos.add(articulo);
-        System.out.println("Artículo " + articulo.getNombre() + " agregado al almacén.");
+        if(articulo.getCantidad()<0){
+            System.out.println("Cantidad inválida");
+        } else{
+            listaArticulos.add(articulo);
+            System.out.println("Artículo " + articulo.getNombre() + " agregado al almacén.");
+        }
         return true;
     }
 
@@ -65,9 +69,8 @@ public class Almacen {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // MODIFICA EL PRECIO DE UN ARTÍCULO 
-    public void modificarPrecio(String nombre, double nuevoPrecio) {
+    public void modificarPrecio(String nombre, double nuevoPrecio) throws Exception {
         boolean encontrar = false;
-    
         for (Articulo articulo : listaArticulos) {
             if(articulo.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
                 articulo.setPrecio(nuevoPrecio);
@@ -84,10 +87,11 @@ public class Almacen {
         }
     }
 
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // RECIBE UNA CANTIDAD DE UNIDADES DE UN ARTÍCULO
-    public boolean recibirArticulo(int indice, int cantidad) {
+    public boolean recibirArticulo(int indice, int cantidad) throws Exception {
         listaArticulos.get(indice).aumentar(cantidad);
         System.out.println("Se han recibido " + cantidad + " unidades del artículo " + listaArticulos.get(indice).getNombre() + ".");
         return true;
@@ -97,7 +101,7 @@ public class Almacen {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // DEVUELVE UNA CANTIDAD DE UNIDADES A DEVOLVER
-    public boolean devolverArticulo(int indice, int cantidad) {
+    public boolean devolverArticulo(int indice, int cantidad) throws Exception {
         listaArticulos.get(indice).disminuir(cantidad);
         System.out.println("Se han devuelto " + cantidad + " unidades del artículo " + listaArticulos.get(indice).getNombre() + ".");
         return true;
