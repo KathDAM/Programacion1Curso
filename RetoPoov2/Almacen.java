@@ -17,7 +17,9 @@ public class Almacen {
         } else {
             System.out.println("Stock en el almacén:");
             for (Articulo articulo : listaArticulos) {
-                System.out.println(articulo.toString());   
+                for (int i = 0; i < listaArticulos.size(); i++) {
+                    System.out.println("Indice "+ i + ": " + articulo.toString());
+                } 
             }
         }
     }
@@ -33,15 +35,15 @@ public class Almacen {
 
     // BUSCA UN ARTÍCULO POR NOMBRE
     public void buscarArticulo(String nombre){
-        for (Articulo articulo : listaArticulos) {
-            if (articulo.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
-                System.out.println("El artículo " + nombre + " se encuentra en el almacen.");
-                return;
+            for (Articulo articulo : listaArticulos) {
+                if (articulo.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                    System.out.println("El artículo " + nombre + " se encuentra en el almacen.");
+                    return;
+                }
             }
-        }
         System.out.println("El artículo " + nombre + " no se encuentra en el almacen.");
     }
-
+    
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // AGREGA UN ARTÍCULO AL ALMACÉN

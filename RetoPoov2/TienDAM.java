@@ -11,21 +11,23 @@ public class TienDAM {
 
     //MAIN
     public static void main(String[] args) {
-
+        
         while(reiniciar){ 
             try {   
                 iniciar();  
-            } catch (Exception inicio) {
+            } catch (InputMismatchException e) {
                 System.out.println("Argumento inválido, porfavor introduzca un número del 1 al 3 ");
-                continue;
             }
-        }
+            finally{
+                iniciar();
+            } 
+        } 
     }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //INICIA EL PROGRAMA, SE EJECUTA EL MENU PRINCIPAL
-    public static void iniciar() throws Exception{
+    public static void iniciar(){
         int opcion = 0;
 
         System.out.println("                           ");
@@ -47,18 +49,22 @@ public class TienDAM {
             switch (opcion) {
                 case 1:
                     menuAlmacen();
+                    System.out.println(" ");
                     break;
                 case 2:
-                    System.out.println("");
+                    System.out.println(" ");
                     System.out.println("En mantenimiento, vuelva a probar en unas horas.");
-                    System.out.println("");
+                    System.out.println(" ");
                     //menuPedido();
                     break;
                 case 3:
+                    System.out.println(" ");
                     System.out.println("Gracias por la visita, vuelva pronto.");
+                    System.out.println(" ");
                     reiniciar = false;
                     break;
                 default:
+                    System.out.println(" ");
                     System.out.println("Opción inválida, por favor ingrese un número del 1 al 3.");
                     break;
             }
@@ -135,6 +141,7 @@ public class TienDAM {
         System.out.println("7. Volver al menú principal");
         System.out.print("Ingrese una opción: ");
     }
+    
 //----------------------------------------------------------------------------------------------------------
 
     //ENTRA AL SUBMENU DE ALMACEN
@@ -150,10 +157,11 @@ public class TienDAM {
                     almacen.mostrarArticulos();
                     break;
                 case 2:
+                    almacen.mostrarArticulos();
                     System.out.print("Ingrese el nombre del artículo a buscar: ");
                     String nombre = lector.next();
                     almacen.buscarArticulo(nombre);   
-                    almacen.mostrarArticulos();      
+                    
                     break;
                 case 3:
                     try {
@@ -170,7 +178,7 @@ public class TienDAM {
                     } else {
                         try {
                             almacen.mostrarArticulos();
-                            System.out.println("Ingrese el nombre del artículo a recibir:");
+                            System.out.println("Ingrese el índice del artículo a recibir:");
                             int indice = lector.nextInt();
                             System.out.println("Ingrese la cantidad a recibir:");
                             int cantidad = lector.nextInt();
@@ -271,7 +279,7 @@ public class TienDAM {
             Articulo articulo = new Articulo(nombre, precio, iva, cantidad);
             almacen.agregarArticulo(articulo);
         } catch (Exception e) {
-            System.out.println("El nombre no es valido, vuelve a intentarlo ");
+            System.out.println("El argumento no es valido, vuelve a intentarlo ");
             // VACIAR EL BUFFER
             lector.nextLine();
         }
