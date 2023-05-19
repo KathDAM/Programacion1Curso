@@ -51,3 +51,33 @@ algo simplificado:
 MODELO => Articulo, Almacen y Pedido
 VISTA Y CONTROLADOR => TienDAM
 Haz el diseño/diagrama de clases y luego impleméntalo.
+
+
+    private static void agregarArticulo() {
+        System.out.print("Ingrese el nombre del artículo: ");
+        String nombre = lector.next();
+        System.out.print("Ingrese el precio del artículo: ");
+        double precio = lector.nextDouble();
+        System.out.print("Seleccione el tipo de IVA (1. general, 2. reducido o 3. exento): ");
+        int tipoIva = lector.nextInt();
+        double iva = 0;
+        switch (tipoIva) {
+            case 1:
+                iva = 0.21; // GENERAL
+                break;
+            case 2:
+                iva = 0.10; // REDUCIDO
+                break;
+            case 3:
+                iva = 0.04; // EXENTO
+                break;
+            default:
+                System.out.println("No es una opción válida");
+                return; // SALE DEL METODO SI EL USUARIO SE EQUIVOCA
+        }
+        System.out.print("Ingrese la cantidad de unidades: ");
+        int cantidad = lector.nextInt();
+        Articulo articulo = new Articulo(nombre, precio, iva, cantidad);
+        almacen.agregarArticulo(articulo);
+        System.out.println("Artículo agregado correctamente.");
+    }
