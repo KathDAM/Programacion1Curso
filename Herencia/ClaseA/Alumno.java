@@ -10,4 +10,18 @@ public class Alumno extends Persona {
         this.notamedia = notamedia;
         
     }
+
+    //GETTER Y SETTER
+    public Double getNotamedia() {
+        return notamedia;
+    }
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setNotamedia(Double notamedia) {
+        this.notamedia = notamedia;
+    }public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
 }
