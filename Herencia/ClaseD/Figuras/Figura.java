@@ -1,4 +1,4 @@
-package Herencia.ClaseB.Figuras;
+package Herencia.ClaseD.Figuras;
 
 public abstract class Figura {
     
