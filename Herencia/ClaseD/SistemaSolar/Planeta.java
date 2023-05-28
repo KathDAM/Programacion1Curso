@@ -41,7 +41,9 @@ public class Planeta extends Astro {
         System.out.println("Masa: " + getMasa());
         System.out.println("Temperatura Media: " + getTemperaturaMedia());
         System.out.println("Distancia al Sol: " + distanciaSol);
+        System.out.println(" ");
         System.out.println("Satélites:");
+        System.out.println(" ");
         for (Satelite satelite : satelites) {
              satelite.mostrarInformacion(); //o se puede asi tambien: System.out.println("- " + satelite.getNombre());
         }

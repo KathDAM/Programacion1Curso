@@ -4,7 +4,7 @@ package Herencia.ClaseD.SistemaSolar;
 public class MainSistemaSolar {
     public static void main(String[] args) {
         // CREAR SISTEMA SOLAR
-        SistemaSolar sistemaSolar = new SistemaSolar("Nuestro Sistema Solar");
+        SistemaSolar sistemaSolar = new SistemaSolar("La Vía Lactea");
 
         // CREAR PLANETAS
         Planeta Tierra = new Planeta("Tierra", 5.97, 14.6, 149.6);

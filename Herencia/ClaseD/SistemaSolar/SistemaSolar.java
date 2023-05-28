@@ -25,9 +25,11 @@ public class SistemaSolar {
     }
     
     public void mostrarInformacion() {
-        System.out.println("Sistema Solar: " + nombre);
-        System.out.println("------------------------------");
+        System.out.println("El Sistema Solar : " + nombre);
+        System.out.println("----------------------------------------");
+        System.out.println(" ");
         System.out.println("Planetas:");
+        System.out.println(" ");
         for (Planeta planeta : planetas) {
             planeta.mostrarInformacion();
             System.out.println();
