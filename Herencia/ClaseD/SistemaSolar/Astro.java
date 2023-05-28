@@ -1,30 +1,38 @@
 //Catherine Alventosa Manyewu
 package Herencia.ClaseD.SistemaSolar;
 
-public class Astro {
+public abstract class Astro {
    
     //ATRIBUTOS
-    protected string nombre;
-    protected double masa;
-    protected 
-   
-    //CONSTRUCTOR (es lo unico que no heredan de la clase padre)
-    public Canario(boolean volando) {
-       super(volando);
+    private String nombre;
+    private double masa;
+    private double temperaturaMedia;
+
+    //CONSTRUCTOR
+    public Astro(String nombre, double masa, double temperaturaMedia) {
+        this.nombre = nombre;
+        this.masa = masa;
+        this.temperaturaMedia = temperaturaMedia;
     }
- 
+
+    //GETTER,SETTER
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getMasa() {
+        return masa;
+    }
+
+    public double getTemperaturaMedia() {
+        return temperaturaMedia;
+    }
 
     //MÉTODO
-    public void habla(){
-        System.out.println(" Pio Pio ");
-    }
-
-    public String toString(){
-        return "Canario [nombre=" + nombre + ", edad=" + edad + ", volando=" + volando + "]";
-    }
-    public void cumpleaños(){
-        edad = edad + 2;
-    }
-
- 
+    public abstract void mostrarInformacion();
 }
+ 
+
+
+
+
