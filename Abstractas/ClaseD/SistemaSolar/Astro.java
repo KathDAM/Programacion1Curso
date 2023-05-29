@@ -1,5 +1,7 @@
+package Abstractas.ClaseD.SistemaSolar;
+
 //Catherine Alventosa Manyewu
-package Herencia.ClaseD.SistemaSolar;
+
 
 public abstract class Astro {
    

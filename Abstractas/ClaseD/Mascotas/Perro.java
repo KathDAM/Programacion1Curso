@@ -1,4 +1,5 @@
-package Herencia.ClaseD.Mascotas;
+package Abstractas.ClaseD.Mascotas;
+
 
 public class Perro extends Mascota {
     

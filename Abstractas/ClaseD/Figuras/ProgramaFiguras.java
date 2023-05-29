@@ -1,5 +1,5 @@
 //Catherine AM
-package Herencia.ClaseD.Figuras;
+package Abstractas.ClaseD.Figuras;
 
 import java.util.ArrayList;
 

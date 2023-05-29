@@ -1,5 +1,5 @@
 //Catherine Alventosa Manyewu
-package Herencia.ClaseD.SistemaSolar;
+package Abstractas.ClaseD.SistemaSolar;
 
 public class MainSistemaSolar {
     public static void main(String[] args) {

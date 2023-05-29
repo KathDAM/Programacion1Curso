@@ -1,4 +1,4 @@
-package Herencia.ClaseD.Figuras;
+package Abstractas.ClaseD.Figuras;
 
 public class Triangulo extends Figura{
     //ATRIBUTOS

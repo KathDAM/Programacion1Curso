@@ -1,5 +1,5 @@
 //Catherine Alventosa Manyewu
-package Herencia.ClaseD.SistemaSolar;
+package Abstractas.ClaseD.SistemaSolar;
 
 public class Satelite extends Astro{
 
