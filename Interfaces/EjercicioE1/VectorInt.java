@@ -7,9 +7,6 @@ public class VectorInt implements IMinMax, IEstaticas{
 
     //ATRIBUTO
     private int[] vector;
-    int tamaño;
-    int max;
-    int min;
 
     //CONSTRUCTOR
     public VectorInt(int tamaño) {
@@ -25,35 +22,25 @@ public class VectorInt implements IMinMax, IEstaticas{
         this.vector = vector;
     }
 
-    public int getTamaño() {
-        return tamaño;
-    }
-
-    public void setTamaño(int tamaño) {
-        this.tamaño = tamaño;
-    }
-
     @Override
     public int getMinimo() {
-        /*int minimo = (int) Math.min(min, max);
-        return minimo;*/
+        int min = vector[0];
         for (int i = 0; i < vector.length; i++) {
             if (vector[i] < min) {
                 min = vector[i];
             }
        }
-        System.out.println(min);
         return min;
     }
 
     @Override
     public int getMaximo() {
-        for (int i = 0; i > vector.length; i++) {
+        int max = vector[0];
+        for (int i = 0; i < vector.length; i++) {
             if (vector[i] > max) {
                 max = vector[i];
             }
        }
-        System.out.println(max);
         return max;
     }
 
@@ -61,16 +48,16 @@ public class VectorInt implements IMinMax, IEstaticas{
 
     @Override
     public String toString() {
-        return "Números" + vector + "]";
+        return Arrays.toString(vector);
     }
 
-    public int random(int min, int max) {
+    public void random(int min, int max) {
         for (int i = 0; i < vector.length; i++) {
-            int random = (int)( Math.random() * (max-min+1)+ min);
+            vector[i] = (int) (Math.random() * (max - min + 1) + min);
         }
         Arrays.sort(vector);
-        return max;
     }
+    
 
   
 
@@ -91,8 +78,29 @@ public class VectorInt implements IMinMax, IEstaticas{
 
     @Override
     public double getMediana() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMediana'");
+        Arrays.sort(vector);
+        int mediana = vector.length / 2;
+        if (vector.length % 2 == 0) {
+            return (double) (vector[mediana - 1] + vector[mediana]) / 2;
+        } else {
+            return vector[mediana];
+        }
     }
 
+    public String esMayor(int[] vector2) {
+        if (vector1 > vector2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String esMenor(int[] vector2) {
+        return null;
+    }
+
+    public String esIgual(int[] vector2) {
+        return null;
+        //return thisNumber.equals(otherNumber);
+    }
 }
