@@ -63,8 +63,20 @@ public class VectorInt implements IMinMax, IEstaticas{
 
     @Override
     public int getModa() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getModa'");
+        int devuelve = 0;
+        int moda = 0;
+        for (int i = 0; i < vector.length; i++) { // recorremos el array primero
+            for (int j = 0; j < vector.length; j++) { //recorremos el mismo array con otra variable para comparar arrays
+                if (vector[i] == vector[j]) {  // == para comparar dos vectores
+                   devuelve ++;
+                }
+                if(devuelve > moda){
+                    devuelve = moda;
+                    moda = vector[i];
+                }
+            }
+        }
+        return moda;
     }
 
     @Override
@@ -87,19 +99,22 @@ public class VectorInt implements IMinMax, IEstaticas{
         }
     }
 
-    public String esMayor(int[] vector2) {
+    public boolean esMayor(int[] vector2) {
+        int[] vector1 = vector;
+
         if (vector1 > vector2) {
             return true;
         } else {
             return false;
+            
         }
     }
 
-    public String esMenor(int[] vector2) {
+    public boolean esMenor(int[] vector2) {
         return null;
     }
 
-    public String esIgual(int[] vector2) {
+    public boolean esIgual(int[] vector2) {
         return null;
         //return thisNumber.equals(otherNumber);
     }

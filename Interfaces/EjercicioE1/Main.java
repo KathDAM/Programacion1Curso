@@ -11,7 +11,7 @@ public class Main {
         System.out.println( "Máximo: " + vector1.getMaximo());
         System.out.println( "Media: " + vector1.getMedia());
         System.out.println( "Mediana: " + vector1.getMediana());
-       // System.out.println( "Moda: " + vector1.getModa());
+        System.out.println( "Moda: " + vector1.getModa());
     
         System.out.println();
 
@@ -19,7 +19,7 @@ public class Main {
         vector2.random(-20, 20);
         System.out.println(vector2);
         System.out.println("¿Es igual? " + vector1.esIgual(vector2.getVector()));
-        System.out.println("¿Es mayor? " + vector1.esMayor(vector2.getVector()));
+        //System.out.println("¿Es mayor? " + vector1.esMayor(vector2.getVector()));
         System.out.println("¿Es menor? " + vector1.esMenor(vector2.getVector()));
 
     }
